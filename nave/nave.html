@@ -21,7 +21,9 @@
     <canvas id="miCanvas" width="640" height="480"></canvas>
 
     <script type="application/javascript">
-       
+    var A = function () {
+			console.log('Texto en consola desde JavaScript');
+    }
         var canvas = document.getElementById("miCanvas");
         //Establecemos el contexto de ese canvas en 2D. Es decir, dibujaremos en 2D.
         var contexto = canvas.getContext("2d");
@@ -36,6 +38,23 @@
         var indiceAnimacion = 0;
         var ultimoCuadro = new Date ().getTime();
         var tiempoAcumulado = 0;
+
+        var moverDerecha = function () {
+			x++;
+			if (indiceAnimacion < 2 && tiempoAcumulado > 1) {
+				tiempoAcumulado = 0;
+				indiceAnimacion++;
+			}
+		}
+
+		var moverIzquierda = function () {
+			x--;
+			if (indiceAnimacion > 0 && tiempoAcumulado > 1) {
+				tiempoAcumulado = 0;
+				indiceAnimacion--;
+			}
+		}
+        var moverPersonaje = moverDerecha;
 
          var spriteSheet = new Image();
         var x = 10;
@@ -55,6 +74,8 @@
             ultimoCuadro = esteCuadro;
             tiempoAcumulado += delta;
             
+                
+
             var imagenActual = posiciones[indiceAnimacion];
 
             contexto.drawImage(spriteSheet,imagenActual.x, imagenActual.y, 25, 16, x, y, 25, 16);
