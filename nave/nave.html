@@ -21,12 +21,38 @@
     <canvas id="miCanvas" width="640" height="480"></canvas>
 
     <script type="application/javascript">
- "use strict"
-        var a=10, b= 'mi texto'
-        c= 'mi otro texto', d= true,
-        e=false;
-        
 
+     "use strict" ;
+        var a = 10, b = 'mi texto',
+			c = "mi otro texto", d = true,
+			e;
+        console.log(typeof a);
+		console.log(typeof b);
+		console.log(typeof c);
+		console.log(typeof d);
+		console.log(typeof e);
+		
+        var a;
+		
+		if (a == undefined) {
+			console.log('Tipo no definido');
+		} else {
+			a++;
+		}
+		
+		var b = null;
+		console.log(typeof b);
+		
+		var c = '10', d = 10;
+		console.log(typeof c);
+		console.log(typeof d);
+		d += '';
+		console.log(typeof d);
+		if (c = d) {
+			console.log('iguales');
+		} else { 
+			console.log('no son iguales');
+		}
     var A = function () {
 			console.log('Texto en consola desde JavaScript');
     }
@@ -44,6 +70,11 @@
         var indiceAnimacion = 0;
         var ultimoCuadro = new Date ().getTime();
         var tiempoAcumulado = 0;
+
+        var enemigos = [];
+		for (var i = 0; i < 10; i++) {
+			enemigos.push(crearEnemigo());
+		}
 
         var moverDerecha = function () {
 			x++;
